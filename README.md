@@ -4,6 +4,7 @@ Ceci est un simple kit de démarage pour un projet Wordpress.
 
 Il inclu :
 
-* [Wordpress Skeleton](https://github.com/markjaquith/WordPress-Skeleton) sans le submodule wp
-* [wp_capistrano](https://github.com/kronda/wp_capistrano) par Kronda
+* Une version modifiée de [Wordpress Skeleton](https://github.com/markjaquith/WordPress-Skeleton) 
+* Le déploiment via [Capistrano](http://www.capistranorb.com)
+* Le theme [Bones](http://themble.com/bones/)
 * la version 3.7.1 française de Wordpress
