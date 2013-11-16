@@ -13,11 +13,20 @@ set :httpd_group, 'user' # généralement votre nom d'utilisateur chez votre hé
 set :scm, 'git'
 set :deploy_via, :copy
 
+# Définissez le domaine de votre application sur votre machine
+set :local_domain, 'monapp.dev'
+
 # Définissez vos données de connection SQL
+set :db_name, 'DB_NAME'
 set :db_user, 'DB_USER' 
 set(:db_pass) { Capistrano::CLI.password_prompt("Mot de passe SQL : ") } #Ne touchez pas, le mot de passe vous sera demandé lors du déploiement 
-set :db_name, 'DB_NAME'
 set :db_host, 'DB_HOST'
+
+# Définissez vos données de connection SQL LOCALES
+set :local_db_name, 'dbname'
+set :local_db_user, 'root'
+set :local_db_pass, 'root'
+set :local_db_host, 'localhost'
 
 set :stages, %w(dev prod) #définissez vos branches
 set :default_stage, "prod" #définissez votre branche par défaut
@@ -35,5 +44,5 @@ role :app, "ssh.alwaysdata.com"  # Souvent le même que web
 role :db,  "ssh.alwaysdata.com", :primary => true 
 
 # Le chemin vers WP-cli
-set :wp, "cd #{current_path}/#{app_root} ; /home/user" 
+set :wp, "/home/#{httpd_group}/.wp-cli/bin/wp" 
 
