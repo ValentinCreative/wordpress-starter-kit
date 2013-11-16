@@ -3,12 +3,18 @@
 // Load database info and local development parameters
 // ===================================================
 if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
+	ini_set( 'display_errors', 1 );
+	define( 'WP_DEBUG_DISPLAY', true );
 	define( 'WP_LOCAL_DEV', true );
 	include( dirname( __FILE__ ) . '/local-config.php' );
 } elseif (	file_exists( dirname( __FILE__ ) . '/dev-config.php' ) ) {
+	ini_set( 'display_errors', 1 );
+	define( 'WP_DEBUG_DISPLAY', true );
 	define( 'WP_LOCAL_DEV', true );
 	include( dirname( __FILE__ ) . '/dev-config.php' );
 } elseif ( file_exists( dirname( __FILE__ ) . '/prod-config.php' ) ) {
+	ini_set( 'display_errors', 0 );
+	define( 'WP_DEBUG_DISPLAY', false );
 	define( 'WP_LOCAL_DEV', false );
 	include( dirname( __FILE__ ) . '/prod-config.php' );
 } else {
