@@ -3,6 +3,10 @@
 /sql-dump-*.sql
 /db-sync
 /content/upgrade/
+/content/uploads/
+/content/w3tc/
+/content/avatars/
+/content/cache/
 .DS_Store
 *.sass-cache*
 *~
@@ -26,4 +30,3 @@ wp/local-config.php
 db
 /.gitattributes
 wp/wp-content/debug.log
-
