@@ -1,9 +1,7 @@
 <?php
 /*
-This is a sample local-config.php file
-In it, you *must* include the four main database defines
-
-You may include other settings here that you only want enabled on your local development checkouts
+Ceci est un fichier local-config.php d'exemple
+Dans ce fichier, vous *devez* définir les informations de connexion à votre base de donnée
 */
 
 define( 'DB_NAME', 'local_db_name' );
