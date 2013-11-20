@@ -168,27 +168,27 @@ namespace :db do
 end
  
 namespace :files do
-	desc "Download a backup of the wp-content (minus themes + plugins) directory from the given stage."
-	task :pull, :roles => :web do
-		domains.each do |domain|
- 		if exists?(:gateway)
-			run_locally("rsync --recursive --times --omit-dir-times --chmod=ugo=rwX --rsh='ssh #{ssh_options[:user]}@#{gateway} ssh  #{ssh_options[:user]}@#{find_servers(:roles => :web).first.host}' --compress --human-readable --progress --exclude 'content/plugins' --exclude 'content/themes' :#{deploy_to}/#{shared_dir}/content/ content/")
-		else
-			run_locally("rsync --recursive --times --omit-dir-times --chmod=ugo=rwX --rsh=ssh --compress --human-readable --progress --exclude 'content/plugins' --exclude 'content/themes' #{ssh_options[:user]}@#{find_servers(:roles => :web).first.host}:#{deploy_to}/#{shared_dir}/content/ content/")
-		end
-		end
-	end
- 
-	desc "Push a backup of the wp-content (minus themes + plugins) directory from the given stage."
-	task :push, :roles => :web do
-		domains.each do |domain|
-		if exists?(:gateway)
-			run_locally("rsync --recursive --times --omit-dir-times --chmod=ugo=rwX --rsh='ssh #{ssh_options[:user]}@#{gateway} ssh  #{ssh_options[:user]}@#{find_servers(:roles => :web).first.host}' --compress --human-readable --progress --exclude 'content/plugins' --exclude 'content/themes' content/ :#{deploy_to}/#{shared_dir}/content/")
-		else
-			run_locally("rsync --recursive --times --omit-dir-times --chmod=ugo=rwX --rsh=ssh --compress --human-readable --progress --exclude 'content/plugins' --exclude 'content/themes' content/ #{ssh_options[:user]}@#{find_servers(:roles => :web).first.host}:#{deploy_to}/#{shared_dir}/content/")
-		end
-		end
-	end
+  desc "Download a backup of the wp-content (minus themes + plugins) directory from the given stage."
+  task :pull, :roles => :web do
+    domains.each do |domain|
+      if exists?(:gateway)
+        run_locally("rsync --recursive --times --omit-dir-times --chmod=ugo=rwX --rsh='ssh #{ssh_options[:user]}@#{gateway} ssh  #{ssh_options[:user]}@#{find_servers(:roles => :web).first.host}' --compress --human-readable --progress --exclude 'content/plugins' --exclude 'content/themes' :#{deploy_to}/#{shared_dir}/content/ content/")
+      else
+        run_locally("rsync --recursive --times --omit-dir-times --chmod=ugo=rwX --rsh=ssh --compress --human-readable --progress --exclude 'content/plugins' --exclude 'content/themes' #{ssh_options[:user]}@#{find_servers(:roles => :web).first.host}:#{deploy_to}/#{shared_dir}/content/ content/")
+      end
+    end
+  end
+
+  desc "Push a backup of the wp-content (minus themes + plugins) directory from the given stage."
+  task :push, :roles => :web do
+    domains.each do |domain|
+      if exists?(:gateway)
+        run_locally("rsync --recursive --times --omit-dir-times --chmod=ugo=rwX --rsh='ssh #{ssh_options[:user]}@#{gateway} ssh  #{ssh_options[:user]}@#{find_servers(:roles => :web).first.host}' --compress --human-readable --progress --exclude 'content/plugins' --exclude 'content/themes' content/ :#{deploy_to}/#{shared_dir}/content/")
+      else
+        run_locally("rsync --recursive --times --omit-dir-times --chmod=ugo=rwX --rsh=ssh --compress --human-readable --progress --exclude 'content/plugins' --exclude 'content/themes' content/ #{ssh_options[:user]}@#{find_servers(:roles => :web).first.host}:#{deploy_to}/#{shared_dir}/content/")
+      end
+    end
+  end
 end
  
  
