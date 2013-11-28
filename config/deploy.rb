@@ -3,15 +3,15 @@ set :application, "NOM_APP"
 # Définissez le chemin de votre repo
 set :repository,  "git@github.com:USER/REPO.git"
 
-# Définissez le chemin vers lequel vous voulez déployer votre WP
-set :deploy_to, "~/www/"
-
 set :domains, ["default"]
 
 set :httpd_group, 'user' # généralement votre nom d'utilisateur chez votre héberger 
 
 set :scm, 'git'
-set :deploy_via, :copy
+set :deploy_via, :remote_cache
+
+# On exclue les fichiers inutiles sur le serveur
+set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"]
 
 # Définissez le domaine de votre application sur votre machine
 set :local_domain, 'monapp.dev'
